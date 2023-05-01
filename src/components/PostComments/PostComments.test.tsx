@@ -7,4 +7,24 @@ describe('Teste para o componente PostComment', () => {
         render(<PostComment/>);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
     });
+    test('Deve comentar Legal no post', () => {
+        render(<PostComment />)
+        fireEvent.change(screen.getByTestId('text-area'), {
+            target: {
+                value: 'Legal'
+            }
+        })
+        fireEvent.click(screen.getByTestId('btn-comentar'))
+        expect(screen.getByText('Legal')).toBeInTheDocument()
+    });
+    test('Deve comentar Maneiro no post', () => {
+        render(<PostComment />)
+        fireEvent.change(screen.getByTestId('text-area'), {
+            target: {
+                value: 'Maneiro'
+            }
+        })
+        fireEvent.click(screen.getByTestId('btn-comentar'))
+        expect(screen.getByText('Maneiro')).toBeInTheDocument()
+    })
 });
